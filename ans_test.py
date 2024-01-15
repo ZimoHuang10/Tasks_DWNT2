@@ -154,6 +154,29 @@ def ans_test(id):
 
     gender = input('please enter your gender')
     
+    # example trial 
+    display(Image('example.png'))
+    bottom_area = widgets.Output(layout={"height":"60px"})
+            
+    btn1 = widgets.Button(description="Left")
+    btn2 = widgets.Button(description="Right")
+            
+    btn1.on_click(register_btn_event)
+    btn2.on_click(register_btn_event)
+
+    btn1.layout.width = '500px'
+    btn2.layout.width = '500px'
+            
+    panel = widgets.HBox([btn1, btn2])
+    bottom_area.append_display_data(panel)
+    display(bottom_area)
+    wait_for_even_spatial()
+    clear_output()
+
+    display(Image('start.png'))
+    time.sleep(3.0)
+    clear_output()
+
                                      
     answer = []    # participants's response 
     rt     = []    # reaction time per trial
@@ -269,6 +292,7 @@ correct_ans = ["C","B","A","B","C","C","B","D","D","B","A","D","C"]
 stim_Ans = dict(zip(stimList,correct_ans))
 
 
+
 def spatialReasoning(id):
                              
     answer = []    # participants's response 
@@ -276,13 +300,42 @@ def spatialReasoning(id):
     score  = 0
     rematrix = []
 
-    for i in range(12):
+    example = 'Slide1.png'
+    display(Image(example))
+
+    bottom_area = widgets.Output(layout={"height":"60px"})
+                
+    btn1 = widgets.Button(description="A")
+    btn2 = widgets.Button(description="B")
+    btn3 = widgets.Button(description="C")
+    btn4 = widgets.Button(description="D")
+            
+    btn1.on_click(register_btn_event)
+    btn2.on_click(register_btn_event)
+    btn3.on_click(register_btn_event)
+    btn4.on_click(register_btn_event)
+
+    btn1.layout.width = '150px'
+    btn2.layout.width = '150px'
+    btn3.layout.width = '150px'
+    btn4.layout.width = '150px'
+            
+    panel = widgets.HBox([btn1, btn2,btn3,btn4])
+    bottom_area.append_display_data(panel)
+
+   
+    display(bottom_area)
+
+    wait_for_even_spatial()
+
+    clear_output()
+
+    for i in range(1,12):
         # tracking time window for answering 
         start_time = time.time()
-    
         stim        = Image(stimList[i])
         display(stim)
-    
+
         bottom_area = widgets.Output(layout={"height":"60px"})
                     
         btn1 = widgets.Button(description="A")
@@ -295,13 +348,15 @@ def spatialReasoning(id):
         btn3.on_click(register_btn_event)
         btn4.on_click(register_btn_event)
 
-        btn1.layout.width = '250px'
-        btn2.layout.width = '250px'
-        btn3.layout.width = '250px'
-        btn4.layout.width = '250px'
+        btn1.layout.width = '150px'
+        btn2.layout.width = '150px'
+        btn3.layout.width = '150px'
+        btn4.layout.width = '150px'
                 
         panel = widgets.HBox([btn1, btn2,btn3,btn4])
         bottom_area.append_display_data(panel)
+    
+       
         display(bottom_area)
 
         re         = wait_for_even_spatial()
