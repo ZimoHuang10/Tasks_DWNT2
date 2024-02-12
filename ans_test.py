@@ -288,7 +288,7 @@ def ans_test(id):
 import glob
 stimList = glob.glob('Slide*.png')
 stimList.sort(key=lambda filename: int(filename[5:-4]))
-correct_ans = ["C","B","A","B","C","C","B","D","D","B","A","D","C"]
+correct_ans = ["C","B","A","B","C","C","B","D","B","A","D","C"]
 stim_Ans = dict(zip(stimList,correct_ans))
 
 
